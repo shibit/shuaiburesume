@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
-
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)0ikm+%brsc6p+$^n=kya%4hgj9l+5s)7v8yr6^ud99^0n-*76'
+SECRET_KEY = 'django-insecure-44^g+nje^+tfaz+9xq(em19bj6)n6ob&i4)!2z^#5tbf=9fnod'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['shuaiburesume.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['shuaiburesume-cli.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -39,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'base',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +55,7 @@ ROOT_URLCONF = 'resume.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,13 +115,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = 'staticfiles/'
-MEDIA_URL = '/images/'
+STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staticfiles')
-]
+    BASE_DIR / "static"
+    ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
